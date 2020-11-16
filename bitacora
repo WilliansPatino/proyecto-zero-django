@@ -1,0 +1,31 @@
+Arrancar el proyecto
+
+	$ django-admin startproject ProyectoDjango
+
+Crear la aplicacion principal
+
+	$ python3 manage.py startapp mainapp
+
+Crear vistas, urls y templates
+
+		o agregar las vistas
+		o Ajustar setting.py
+
+		Inicio, About
+
+Crear la aplicacion para las paginas
+
+	$ python3 manage.py startapp pages
+
+Generar las migracion  de los modelos 
+
+	$ python3 manage.py makemigrations
+
+General las bases de datos y el codigo SQL
+
+	$ python3 manage.py sqlmigrate pages 0001
+
+	$ python3 manage.py migrate
+	
+# Crear el administrador del panel
+	 $python3 manage.py createsuperuser

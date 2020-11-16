@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        <!-- titulo de cada pagina/template -->
+        {% endblock %}
+        | Aprendiendo Django | Willians Patiño
+    </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!--    Cabecera de la pagina -->
+    <div class="header-decorator">
+    <span class="header-izq"></span>
+    <span class="header-cen"></span>
+    <span class="header-der"></span>
+    </div>
+    
+    <header>
+        <div id="logotipo">
+            <!--    logo django -->
+            <img src="{% static 'images/logo.png' %} " alt="">
+            <h1>Proyecto con Django </h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+                      <li>
+                <a href="{% url 'index' %}">Inicio</a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}">Acerca del autor</a>
+            </li>
+            
+        </ul>
+    </nav>
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+    
+    <!-- <h1>Aprendiendo Django | por Willians Patiño</h1> -->
+    <!-- <hr> -->
+   <!--  <ul>
+        <li>
+            <a href="/inicio">Inicio</a>
+        </li>
+        <li>
+            <a href="/hola-mundo">Hola Mundo</a>
+        </li>
+        <li>
+            <a href="/pagina">Página de Prueba</a>
+        </li>
+		  <li>
+            <a href="/contacto">Contacto</a>
+        </li>
+		<li>
+            <a href="/visitar_otra_pagina/">Redirigir a Página desde mi Web con parámetro opcional (ej: /1 o /4)</a>
+        </li>
+		<li>
+            <a href="/visitar_google">Redirigir a Google desde mi Web</a>
+        </li>
+    </ul> -->
+    <div id="content">
+        <div class="box">
+            <!-- <h2 class="title">Titulo Prueba</h2> -->
+            {% block content %}
+                <!-- Codigo que viene de los templates -->
+                <p>
+                    <h4>Este parrafo se mantiene por Herencia </h4>
+                    Ut consectetur magna non libero malesuada euismod. 
+                    Mauris sem nisl, iaculis ac ligula sed, blandit 
+                    ullamcorper elit. <strong>Integer</strong> quis vulputate nulla. 
+                    Vivamus at nibh nisi. Aenean in sagittis augue, 
+                    eu viverra ligula. Fusce nec porttitor orci. 
+                </p>
+            {% endblock %}
+        </div>
+    </div>
+    <div id="footer-container">
+        <footer>
+            Master en Python &copy; Willians Patiño
+            <p> {% now 'd.m.Y h:s' %}</p>
+        </footer>
+    </div>
+</body>
+</html>

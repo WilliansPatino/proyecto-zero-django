@@ -1,0 +1,99 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} {{page.title}} {% endblock %}
+
+{%  block content %}
+  
+    <article class="bw-release-main">
+     <div class="bw-release-body ">
+      <div class="bw-release-story" itemprop="articleBody">
+    
+    <h1> {{page.title}} </h1>
+
+    <div class="bw-release-timestamp">
+        {{page.created_at}}       
+    </div>
+    
+    {{page.content}} 
+    </div>
+    </div>
+    </article>
+
+    <!-- ASIDE -->
+    <div class="bw-release-sidebars">
+   
+                <div class="bw-release-logos">
+                    <p>
+                        ESPACIO PUBLICITARIO 
+                    </p>
+                
+                </div> <!-- class="bw-release-logos"> -->
+                
+                <div id="companyInformation">
+
+                  <div class="bw-release-companyinfo">
+	                    <h3 itemprop="sourceOrganization" itemscope="itemscope" itemtype="#"><span itemprop="name">Company info</span>
+	                    </h3>
+                  </div>
+                  <p>
+                     Scripting Here 
+                    </p>
+                  <!-- script 8 removed -->
+                  <!-- script 9 removed -->
+                </div>
+
+
+                <!--- Pagina en otros idiomas -->
+                <div id="ajaxReleaseVersions">
+
+		              <div class="bw-release-versions">
+			              <h2>Release Versions</h2>
+			              <ul
+                            <li> 
+                                <a href="https://www.businesswire.com/news/home/20201028005077/fr/" rel="nofollow">French</a>
+                            </li>
+			    			<li> 
+								      <a href="https://www.businesswire.com/news/home/20201028005091/en/Hyperconvergence-Virtualization-VMware-Cloud-Director-Available-at-IKOULA" rel="nofollow">English</a>
+							</li>
+	                        <li> 
+                                <a href="https://www.businesswire.com/news/home/20201028005077/es/" rel="nofollow">Spanish</a>
+                            </li>
+						    </ul>
+		              </div>
+                </div> <!-- id="ajaxReleaseVersions"> -->
+   
+                <!-- Noticias -->
+                <div id="ajaxRecentStories">
+
+                  <div class="bw-release-related">
+	                  <h2 id="morenewsHeadInfo">More News</h2>
+                     
+	                  <ul id="morenewsSectionInfo">
+
+                            {% comment %} <!-- CICLO DE NOTICIAS -->
+                            {% for news in range(3): %}
+			                <li>
+                                {{news}}
+                            {% endfor %} {% endcomment %}
+                            
+
+		    	                <div>October 07, 2020</div>
+			                      <a href="https://www.businesswire.com/news/home/20201007005575/es/" rel="nofollow">
+                                  Desarrollo  empresarial: IKOULA refuerza su presencia en Europa </a>
+		                  </li>
+                            <li>  
+			                  <div>June 30, 2020</div>
+			                    <a href="https://www.businesswire.com/news/home/20200630005670/es/" rel="nofollow">Infraestructura hiperconvergente: IKOULA elige a DELL Technologies y su solución Vmware VxRail
+                             </a>
+		                    </li>
+		                 
+	                  </ul>
+                  </div> <!--  class="bw-release-related"> -->
+                  <!-- script 10 removed -->
+
+                </div> <!-- id="ajaxRecentStories"> -->
+
+                <!-- script 11 removed -->
+    </div> <!-- class="bw-release-sidebars"> -->
+
+ {% endblock %}
