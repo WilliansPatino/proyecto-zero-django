@@ -32,5 +32,25 @@ General las bases de datos y el codigo SQL
  
 #-- Agregar texto enriquecido en django 
  
-	 install django-ckeditor
+
 	 $ pip3 install django-ckeditor
+
+#--- Mas info con ckeditor
+#
+#  https://ckeditor.com/latest/samples/toolbarconfigurator/index.html#basic
+
+
+
+
+ 
+ 
+# migrar los models para agregar el campor order 
+ 
+\t $ python3 manage.py makemigrations
+ 
+# migrar las BD y codigo SQL  
+	 $ python3 manage.py sqlmigrate pages 0002
+ 
+# Hacer los cambios en las bases de datos  
+ 
+	  manage.py migrate

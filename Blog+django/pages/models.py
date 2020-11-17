@@ -10,6 +10,7 @@ class Page(models.Model):
     #content = models.TextField(verbose_name='Contenido')
     slug = models.CharField(max_length=150, unique=True,
     verbose_name='URL amigable')
+    order = models.IntegerField(default=0, verbose_name='Posición de menú')
     visible = models.BooleanField(verbose_name="¿Visible?")
     created_at = models.DateTimeField(auto_now_add=True,
     verbose_name="Creado el")
@@ -23,8 +24,12 @@ class Page(models.Model):
     def __str__(self):
         return f'{self.title}'
 
-"""  Agregar el feature de text enriquecido  
+"""  o Agregar el feature de text enriquecido  
     
-    o Ajustar content = models.RichTextField(....)
+            Ajustar content = models.RichTextField(....)
+
+     o  Ordenar la pagía a criterio personal
+
+            crear un campo. En este caso. order
 
 """
