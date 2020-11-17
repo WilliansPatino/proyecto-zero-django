@@ -29,3 +29,8 @@ General las bases de datos y el codigo SQL
 	
 # Crear el administrador del panel
 	 $python3 manage.py createsuperuser
+ 
+#-- Agregar texto enriquecido en django 
+ 
+	 install django-ckeditor
+	 $ pip3 install django-ckeditor

@@ -14,7 +14,10 @@
         {{page.created_at}}       
     </div>
     
-    {{page.content}} 
+    <!--  Se agrega |safe para activar el texto enriquecido -->
+    {{page.content|safe}} 
+
+
     </div>
     </div>
     </article>
