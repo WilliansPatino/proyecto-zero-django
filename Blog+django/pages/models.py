@@ -16,5 +16,5 @@ class Page(models.Model):
         verbose_name = 'Página'
         verbose_name_plural = 'Páginas'
 
-def __str__(self):
-    return f'{self.title}'
+    def __str__(self):
+        return f'{self.title}'

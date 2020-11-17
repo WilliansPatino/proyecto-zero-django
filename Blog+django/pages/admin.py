@@ -13,3 +13,8 @@ subtitle = "Panel de gestión"
 admin.site.site_header = title
 admin.site.site_title = title
 admin.site.index_title = subtitle
+
+
+""" moestrar fechas; creado/editado """
+class PageAdmin(admin.ModelAdmin):
+    readonly_fields = ('created_at', 'updated_at')

@@ -17,8 +17,10 @@
  
   <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
   {% comment %} <link rel="stylesheet" href="{% static 'css/main.css' %}"> {% endcomment %}
+  
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style-del-curso.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-   <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
 
 
 
@@ -34,7 +36,7 @@
 <body id="bw-container">
 	  <header role="banner">
 		  <div>
-			  <a href="http://www.businesswire.com/"><img id="bw-home-link" src="Hiperconvergencia%20y%20virtualizaci%C3%B3n%20VMware%20Cloud%20Director%20disponible%20en%20IKOULA%20|%20Business%20Wire_files/bwlogo_extreme.png" title="" alt="Business Wire"></a>
+			  <a href="http://localhost:8000"><img id="bw-home-link" src="{% static 'images/logo-modelo.png' %}" title="" alt="Corporate Logo"></a>
 		  </div>
 	  </header>
 
@@ -56,7 +58,8 @@
 		  <div>
 			    <nav id="bw-nav" role="navigation">
 				      <h2><span>Site Navigation</span></h2>
-				      <ul style="display: block;">
+				      {% comment %} <ul style="display: block;"> {% endcomment %}
+              <ul>
 					        <!-- home -->      
                   <li id="bw-nav-home" class="bw-has-submenu ">
 						          <a href="{% url 'index' %}"><span>Home</span></a>
@@ -164,10 +167,11 @@
 			      </nav>
             
             <!-- script 12 removed -->
+            <script src="{% static 'js/nav.js' %}"></script>
 
             <div id="bw-search-js" class="bw-search-site">
             <div>
-            <h2><span>Search</span></h2>
+            <h2 class="bw-is-toggled"><span>Search</span></h2>
             <div id="bw-search-container" style="display: block;">
               <form id="bw-search-form" name="bw-search-form" action="/portal/site/home/template.SINGLEPORTLET/action.process/permalink/?javax.portlet.action=true&amp;currentTemplateID=PAGE&amp;javax.portlet.tpst=503a8767054f0df6a9e77a100d908a0c&amp;javax.portlet.begCacheTok=com.vignette.cachetoken&amp;javax.portlet.endCacheTok=com.vignette.cachetoken" onsubmit="return searchByUrl();" method="post">
                 <fieldset>

@@ -13,13 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+"""  ----- configuracion inicial   del proyecto -------------
 from django.contrib import admin
 from django.urls import path
 
-# mi configuraciun
-
 from mainapp import views
 from pages import views as page_views
+# tambien puede utilizarse de este modo 
+#               import pages.views
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,3 +30,19 @@ urlpatterns = [
     path('inicio/', views.index, name='inicio'),
     path('pagina/<str:slug>', page_views.page, name='page')
 ]
+"""
+# Hasta aqui todo funciona; menu, estilo, paginas dinámicas y el panel de
+# administracion. Ahora se utilizaran las configuracion de rutas 
+# separadas por aplicacion, definidas estas en archivos y asociada con
+# include()
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('mainapp.urls')),
+    path('', include('pages.urls'))
+]
+
+
