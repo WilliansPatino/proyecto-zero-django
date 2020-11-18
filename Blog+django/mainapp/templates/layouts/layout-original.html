@@ -10,7 +10,7 @@
         | Aprendiendo Django | Willians Patiño
     </title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-original.css' %}">
 </head>
 <body>
     <!--    Cabecera de la pagina -->
@@ -34,7 +34,7 @@
                 <a href="{% url 'index' %}">Inicio</a>
             </li>
             <li>
-                <a href="{% url 'about' %}">Acerca del autor</a>
+                <a href="{% url 'index' %}">Acerca del autor</a>
             </li>
             
         </ul>

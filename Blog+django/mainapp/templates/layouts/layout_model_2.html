@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=" js no-flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" data-triggered="true" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><link type="text/css" rel="stylesheet" href="/video-js.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Descripcion de la pagina: Django & Python  ">
+
+
+    <title>  {% block title %}  {% endblock %}</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/model_2-normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/model_2-styles.css' %}">
+
+    <!-- script+style  1 removido -->
+    <!-- scrip+style 2  removido -->                      
+</head>
+<body>
+    <header class="site-header inicio">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <div>
+                <a href="/">
+                    {% comment %} <img href="#"  src="{% static 'model_2/img/logo.svg' %}" alt="Logotipo"> {% endcomment %}
+                    <img href="#"  src="{% static 'images/logo-modelo.png' %}" alt="Logotipo">
+                </a>
+                </div>
+
+                <div class="mobile-menu">
+                    <a href="#navegacion">
+                        <img src="{% static 'model_2/img/barras.svg' %}" alt="Icono Menu">
+                    </a>
+                </div> 
+
+                <nav id="navegacion" class="navegacion">
+                  
+                    <!-- paginas dinamicas -->
+                  {% for page in pages %}
+                
+                      <a href="{% url 'page' page.2 %}"> {{page.1}}</a>
+                
+                  {% endfor %}
+                  <!-- end pag dinamicas -->
+				
+                </nav>
+            </div>
+            <h1>Blog sobre programación Python</h1>
+        </div> <!-- contenedor -->
+    </header>
+
+    
+
+
+     <main class="seccion contenedor">
+
+       {% block content %}  {% endblock %}
+        <h2 class="fw-300 centrar-texto">Casas y Depas en Venta</h2>
+
+        <div class="contenedor-anuncios">
+           
+
+            <div class="anuncio">
+                <img src="img/anuncio2.jpg" alt="Anuncio casa de lujo">
+                <div class="contenido-anuncio">
+                    <h3>Casa terminados de lujo</h3>
+                 
+                        
+
+                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver Propiedad</a>
+                </div>
+            </div>
+
+           
+        </div>
+
+        <div class="ver-todas">
+            <a href="anuncios.html" class="boton boton-verde">Ver Todas</a>
+        </div>
+    </main>
+
+
+
+    <div class="seccion-inferior contenedor seccion">
+        <section class="blog">
+            <h3 class="centrar-texto fw-300">Nuestro Blog</h3>
+
+            <article class="entrada-blog">
+                <div class="imagen">
+                    <img src="img/blog1.jpg" alt="Entrada de blog">
+                </div>
+                <div class="texto-entrada">
+                    <a href="entrada.html">
+                        <h4>Terraza  en el techo de tu casa</h4>
+                    </a>
+                    <p>Escrito el: <span> 20/10/2019 </span> por: <span> Admin </span> </p>
+                    <p>Consejos para construir una terraza en el techo de tu casa, con los mejores materiales y ahorrando dinero</p>
+
+                      {% comment %} {% block content %}  {% endblock %} {% endcomment %}
+
+                </div>
+            </article>
+  
+    </div>
+
+
+
+  <footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+          
+
+                <nav id="navegacion" class="navegacion">
+                  
+                    <!-- paginas dinamicas -->
+                  {% for page in pages %}
+                
+                      <a href="{% url 'page' page.2 %}"> {{page.1}}</a>
+                
+                  {% endfor %}
+                  <!-- end pag dinamicas -->
+				
+                </nav>
+
+          
+                <a href="/">
+                    {% comment %} <img href="#"  src="{% static 'model_2/img/logo.svg' %}" alt="Logotipo"> {% endcomment %}
+                    <img href="#"  height="50" src="{% static 'images/logo-modelo.png' %}" alt="Logotipo">
+                </a>
+           
+            <p class="copyright">Todos los Derechos Reservados 2019 &copy; </p>
+        </div>
+    </footer>
+
+  
+</body>
+</html>

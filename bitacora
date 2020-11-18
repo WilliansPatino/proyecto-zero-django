@@ -54,3 +54,21 @@ General las bases de datos y el codigo SQL
 # Hacer los cambios en las bases de datos  
  
 	  manage.py migrate
+ 
+---- 17.11.2020 --- 
+
+  507  python3 manage.py startapp blog
+  508  ll
+  509  python3 manage.py runserver
+  510  python3 manage.py makemigrations
+  511  python manage.py sqlmigrate blog 0001
+  512  python3 manage.py sqlmigrate blog 0001
+  513  python3 manage.py migrate
+  514  # cargar modelos en el panel de administracion
+  515  history
+  516  python3 manage.py runserver
+  517  python3 manage.py runserver
+  518  history
+  519  echo " " >> ../bitacora 
+  520  echo "---- 17.11.2020 --- " >> ../bitacora 
+  521  history >> ../bitacora 
