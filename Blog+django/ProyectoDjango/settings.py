@@ -25,7 +25,8 @@ SECRET_KEY = 'an0qi*+6_%4fwkqv)n_b5**zrg+0e9x9uh#hmj#b-o--z&s_vz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.250.0.2','192.168.250.8']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.250.0.2',
+'192.168.250.8','192.168.250.6','192.168.250.9']
 
 
 # Application definition
@@ -66,7 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'pages.context_processor.get_pages'
+                'pages.context_processor.get_pages',
+                'blog.processor.get_categories'
             ],
         },
     },
@@ -123,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+""" 
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
@@ -135,5 +137,7 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+ """
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

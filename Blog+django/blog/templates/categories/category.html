@@ -1,0 +1,27 @@
+{% extends 'layouts/layout-original.html' %}
+
+{% comment %} {% extends 'layouts/layout.html' %} {% endcomment %}
+
+
+
+{% block title %} {{category.name}} {% endblock %}
+
+{%  block content %}
+  
+
+<article class="bw-release-main">
+    <div class="bw-release-body ">
+            <div class="bw-release-story" itemprop="articleBody">
+
+                <h1 class="epi-pageTitle"> Artículos en la categoría: {{category.name}} </h1>
+                <p>{{category.description}}
+            </div>
+
+        <!-- INCLUDE incluye parte del codigo -->
+        {% include 'articles/articles.html' with articles=category.article_set.all %}
+
+
+    </div>
+</article>
+
+ {% endblock %}

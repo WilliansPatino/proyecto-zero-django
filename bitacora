@@ -72,3 +72,184 @@ General las bases de datos y el codigo SQL
   519  echo " " >> ../bitacora 
   520  echo "---- 17.11.2020 --- " >> ../bitacora 
   521  history >> ../bitacora 
+
+---- 18.11.2020
+Vistas y URLs para el listado de los articulos
+
+	o 	crear la url de articulos en 'blog/urls.py' 
+
+			copiar el codigo de cualquier otra 'urls.py'. Por ejemplo de
+				'mainapp/urls.py'
+
+
+		...
+			 path('articulos/', views.list, name='articles-list')
+		...
+
+				==>  views.list 
+
+
+	o 	crear el archivo en 'blog/views.py'
+
+			En este archivo, crear la funcion 'list'
+
+
+
+			def list(request):
+
+				return render(request, 'articles/list.html', {
+				'title': 'Artículos'
+				})
+
+	o 	crear el directorio 'blog/templates' 
+
+	o 	Dentro del directorio 'blog/templates' crear  los directorios:
+
+				'blog/templates/articles'
+
+				'blog/templates/categories'
+
+	o 	Dentro del directorio 'blog/templates/articles', crear el archivo 'list.html'
+
+
+			tomar el codigo de otra template, por ejemplo: 'pages/templates/pages.html',
+			copiar en 'blog/templates/articles/list.html'
+
+
+
+	o 	En el archivo principal de URLs de proyecto, 'ProyectoDjango/urls.py'
+
+			cargar la urls de articulos:
+
+
+				urlpatterns = [
+				..
+				...
+				..
+				path('', include('blog.urls'))
+				]
+
+
+Sacar el listado de articulos en la página
+
+	o 	agregar en la vista 'blog/views.py'
+
+			 articles = Article.objects.all()
+
+			 return(request...., {
+			 ..
+			 'articles': articles
+			 })
+
+Habilitar la carga de imagen para el articulo
+
+	o 	En la raiz del proyecto, agregar una carpeta llamada 'media' 
+
+			'ProyectoDjango/media'
+
+	o 	Luego, configurar en el model 'Article', el campo 'imagen' y agregar:
+
+			imagen = ... (, upload_to='articles')			
+
+	o 	Hacer las configuraciones dentro del Framework
+
+			Ajustar/modificar en el archivo 'settings.py' al final de todo
+
+			# media
+			MEDIA_URL = '/media/'
+			MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+	o 	Para que se pueda subir imagenes y hace disponible  una URL  para visualizarlas,
+		es necesario agregar una configuracion en la raiz del proyecto.
+
+			en 'ProyectoDjango/urls.py' agregar:
+
+				# ruta de imagenes
+				if settings.DEBUG: 
+    				from django.conf.urls.static import static
+    				urlpatterns += static(settings.MEDIA_URL, 
+    				document_root=settings.MEDIA_ROOT)
+
+			Tambien agregar en el mismo archivo:
+
+				from django.conf import settings
+
+
+Ordenar los artículos (cambiar el criterio de ordenacion) de mas nuevo a mas viejo.
+
+	o 	Bien, modificar en el modelo de articulos, 'blog/models.py'
+
+		agregar en la clase Meta:
+
+			...
+			ordering = ['-created_at']
+
+
+
+Agregar Menu desplegable de categorias
+
+	o  ajustar en el código
+
+Mostrar las categorias provenientes del archivos
+
+	o 	Crear el archivo en 'blog/processor.py'
+
+		Tomado el código de 'pages/context_proccesor.py', copiar en
+		'blog/processor.py'  y hacer los ajustes.
+
+	o 	Ahora vamos a registrar el procesador de contexto; en 'settings.py' en
+		la sección: TEMPLATES
+
+
+			TEMPLATES = [
+			    {...
+			    ...
+			    'blog.processor.get_categories'
+			],
+
+
+	o 	Agregar en el layout
+
+			<ul>
+	            {% for category in categories %}
+	                <li>
+	                    <a href="#">{{category.1}}</a>
+	                </li>   
+	            {% endfor %}
+            </ul>
+
+
+* Mostrar en el menú solo aquellas categorías que tenga contenido asociados o publicados
+
+	o 	Ajustar configuraciones en el procesador 'blog/processor.py'
+
+
+			from blog.models import Category, Article
+
+			   cat_in_use = Article.objects.filter(public=True).values_list('categories', flat=True)
+
+    			categories = Category.objects.filter(id__in=cat_in_use).values_list('id', 'name')
+    
+			    return {
+			        'categories': categories,
+			        'ids': cat_in_use
+			    }
+
+
+* Hacer una pagina para cada categoria
+
+
+	o 	--
+
+
+* Mostrar Error 404
+
+	o 	importar 'get_object_or_404' en urls.py
+
+		from django.shortcuts import render, get_object_or_404
+
+	o 	ajustar en la vista
+
+		  category = get_object_or_404(Category, id=category_id)
+
+

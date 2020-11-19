@@ -30,12 +30,28 @@
 
     <nav>
         <ul>
-                      <li>
+            <li>
                 <a href="{% url 'index' %}">Inicio</a>
             </li>
-            <li>
-                <a href="{% url 'index' %}">Acerca del autor</a>
-            </li>
+                      <!-- paginas dinamicas -->
+                  {% for page in pages %}
+                        <li>
+                        <a href="{% url 'page' page.2 %}"> {{page.1}}</a>
+                        </li>
+                  {% endfor %}
+                  <!-- end pag dinamicas -->
+
+                     <!-- CATEGORIES - despliege dinámico -->
+                  <li class="bw-has-submenu bw-current">
+                    <a href="{% url 'articles-list' %}"><span>Categorías</span></a>
+                        <ul>
+                        {% for category in categories %}
+                            <li>
+                                <a href="{% url 'category' category.0 %}">{{category.1}}</a>
+                            </li>   
+                        {% endfor %}
+                        </ul>
+			        </li>
             
         </ul>
     </nav>
