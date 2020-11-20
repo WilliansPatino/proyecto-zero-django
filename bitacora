@@ -253,3 +253,70 @@ Mostrar las categorias provenientes del archivos
 		  category = get_object_or_404(Category, id=category_id)
 
 
+
+*--- 19.10.2020 ---
+
+* Una página para cada artículo
+
+	o 	
+
+* Personalizar los listados de gestión de página en el panel de admin.
+
+	o 	Abrir 'admin.py' de la app 'pages'
+
+		Agregar esta config en la clase:
+
+			class PageAdmin(admin.ModelAdmin):
+				readonly_fields = ('created_at', 'updated_at')
+				search_fields = ('title', 'content')
+				list_filter = ('visible',)
+				list_display = ('title', 'visible', 'created_at')
+				ordering = ('-created_at',)
+
+	
+		Agregar 'PageAdmin' en:
+
+				 admin.site.register(Page, PageAdmin)
+
+
+
+* Personalizacion #2 : 
+
+
+* Paginación en Django
+
+	o 	En la vista de la app 'Blog/views.py', agregar 'Paginator'
+
+		from django.core.paginator import Paginator
+
+	o 	Agregar una variable en la misma vista, ejemplo: paginator
+		en la funcion list
+
+
+		def list(request):
+
+			
+			paginator = Paginator(articles, 2)
+
+			#  el 2 indica cuantos artículos por página
+
+	o 	luego, coger el numero de pagina
+
+		# coger numero de pagina / paginar todos los articulos
+
+		page = request.GET.get('page')
+		page_article = paginator.get_page(page)
+
+
+	o 	Reemplazar la variable 'articles' el el return render de la 
+		funcion 'list'
+
+		 return render(request, 'articles/list.html', {
+   
+        'articles': articles <--- page_article
+		})
+
+
+*  Página de login/registro
+
+* Personalizar la vista del formulario de registro basado en un modelo

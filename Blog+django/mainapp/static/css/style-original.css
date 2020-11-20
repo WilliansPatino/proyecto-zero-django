@@ -140,9 +140,8 @@ nav > ul > li:hover > ul > li:hover a{
     /* convertir toda el area clickable */
     display: block;
 }
-
-
 /* end submenu */
+
 
 
 
@@ -217,6 +216,28 @@ nav > ul > li:hover > ul > li:hover a{
     border-radius: 5px;
     box-shadow: 0px 8px 8px gray;
 }
+
+/* enlaces */
+.box a {
+    color: #444;
+    transition: all 300ms;
+
+}
+
+.box a:hover {
+    color: #046b3f;
+}
+
+.box .image {
+    float: left;
+    margin-right: 30px;
+    width: 22%;
+}
+
+.box .image img {
+    width: 100%;
+}
+
 .title {
     color: #444;
     letter-spacing: 1px;
@@ -243,7 +264,9 @@ nav > ul > li:hover > ul > li:hover a{
     padding: 5px;
 }
 
-.box form input[type='text'] {
+.box form input[type='text'],
+.box form input[type='email'],
+.box form input[type='password']  {
     width: 100%;
     margin-bottom:10px ;
     background-color: #def1f1
@@ -262,7 +285,7 @@ nav > ul > li:hover > ul > li:hover a{
     padding: 10px;
     margin-top: 20px;
     background: #0f8a53;
-    color: white;
+    color: black;
     width: 30%;
     text-transform: uppercase;
     border-radius: 20px;
@@ -273,8 +296,8 @@ nav > ul > li:hover > ul > li:hover a{
 .box form input[type="submit"]:hover {
 
     cursor: pointer;
-    /* background:#2ba977; */
-    /* color: black; */
+    background:#2ba977;
+    color: whitesmoke;
     background: #046b3f;
 
 }
@@ -309,7 +332,7 @@ footer {
     color: red;
     box-shadow: 0px 0px 0px black;
 }
-.error_message {
+.error_message, .alert {
     padding: 12px;
     background: #d30d0d;
     text-align: center;
@@ -319,7 +342,7 @@ footer {
    font-size: 20px;
    color: white;
 }
-.success_message {
+.success_message, .success  {
     padding: 12px;
     background: #0f8a53;
     text-align: center;
@@ -338,7 +361,7 @@ footer {
     border-bottom: 1px solid #eee;
     clear: both;
 }
-.article-item .image img {
+.article-item, .image img {
     width: 200px;
     height: 145px;
     float: left;
@@ -373,12 +396,34 @@ footer {
     
 }
 .article-item span {
-    font-size: 15px;
+    font-size: 14px;
     color: gray;
     display: block;
     padding: 10px;
     margin-bottom: 10px;
 } 
+
+.articles  {
+    padding-bottom: 10px;
+    color: #333;
+    display: block;
+    /* font-size: 25px; */
+    padding-bottom: 20px;
+    /* background-color: #d30d0d; */
+    display: block;
+
+}
+
+.articles .data .article-content {
+    text-align: justify;
+    /* background-color: green; */
+    display: block;
+    padding:0 10px 0 10px;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+     /* 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+}
+
 .btn {
     padding: 10px;
     background: rgb(255, 55, 55);

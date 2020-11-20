@@ -1,0 +1,39 @@
+{% extends 'layouts/layout-original.html' %}
+
+
+{% block title %} {{article.title}} {% endblock %}
+
+{%  block content %}
+            <p> DETAIL </p>
+    {% if article.image != 'null' and  article.image.url|length >= 1 %}
+                    <div class="image">	
+                        <img  src="{{article.image.url}}" />
+                    </div>
+    {% endif%}
+  
+    <article class="bw-release-main">
+        <div class="bw-release-body ">
+            <div class="bw-release-story" itemprop="articleBody">
+
+                <h1 class="epi-pageTitle title "> {{article.title}} </h1>
+
+                <div class="bw-release-timestamp">
+                    <span>
+                        {{article.created_at}}       
+                    </span>
+                </div>
+                
+                <p>
+                <span class="content">
+                    {{article.content|safe}}
+                </span>
+                </p>
+
+
+                
+                    
+            </div>
+        </div>
+    </article>
+
+ {% endblock %}

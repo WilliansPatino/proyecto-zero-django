@@ -1,0 +1,39 @@
+{% extends 'layouts/layout-original.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{%  block content %}
+    <h1> {{title}} </h1>
+
+      {% if messages %}
+
+        {% for message in messages %}
+            <div class="alert success">
+                {{message}}
+            </div>
+        {% endfor %}
+
+    {% endif %}
+
+    {{register_form.errors}}
+
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <!-- desabilitado para afinar detalles del formulario-->
+        {% comment %} {{ register_form.as_p}} {% endcomment %}
+
+        <div >
+        {% for field in register_form %}
+            <label>{{field.label}} </label>
+            {{field}}
+        {% endfor %}
+        </div>
+
+
+        <input type="submit" value="Registrarse"/>
+
+    </form>
+
+ {% endblock %}
+

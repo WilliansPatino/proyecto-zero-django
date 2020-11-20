@@ -30,18 +30,22 @@
 
     <nav>
         <ul>
-            <li>
-                <a href="{% url 'index' %}">Inicio</a>
-            </li>
-                      <!-- paginas dinamicas -->
+
+                <li>
+                        <a href="{% url 'inicio' %}">Inicio</a>              
+                </li>
+
+  
+                <!-- paginas dinamicas -->
                   {% for page in pages %}
                         <li>
                         <a href="{% url 'page' page.2 %}"> {{page.1}}</a>
                         </li>
                   {% endfor %}
-                  <!-- end pag dinamicas -->
+                <!-- end pag dinamicas -->
+                   
 
-                     <!-- CATEGORIES - despliege dinámico -->
+                <!-- CATEGORIES - despliege dinámico -->
                   <li class="bw-has-submenu bw-current">
                     <a href="{% url 'articles-list' %}"><span>Categorías</span></a>
                         <ul>
@@ -52,6 +56,12 @@
                         {% endfor %}
                         </ul>
 			        </li>
+
+                <!-- registro -->   
+                <li>
+                    <a href="{% url 'registerpage' %}">Registro</a>
+                </li>
+                    
             
         </ul>
     </nav>

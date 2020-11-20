@@ -1,44 +1,54 @@
+    <p> ARTICLES </p>
 {% for article in articles %}
-            <article class="article-item">
 
-            <div class="data">
-                        
-                
+    <article class='articles'>
 
+        <div class="data">
+
+            {% if article.image != 'null' and  article.image.url|length >= 1 %}
                 <div class="image">	
-                    {% if article.image != 'null' and  article.image.url|length >= 1 %}
-                        <img  src="{{article.image.url}}" />
-                                
-                    {% endif%}
+                    <img  src="{{article.image.url}}" />
                 </div>
-            
-                <h3> {{article.title}}  </h3>
+            {% endif%}
 
-                <span>    {{article.created_at}} </span>
-           
-                {{article.user.first_name}} :: 
-               
-                    <p>
-                       {% for category in article.categories.all %}
-                        <!-- incluye el enlace a la categoría -->
-                        <a href="{% url 'category' category.id %}"> {{category.name}} </a>
- 
-                        <!-- separar las categorias -->
-                        {% if forloop.counter < article.categories.all|length %}
-                        {{'| '}}
-                        {% endif %}
 
-                        {% endfor %}
-             
-                    </p>
-                <div class="article-content">	{{article.content|safe}} </div>
-                
-                {% comment %}    <p>
-                        <a href="{% url 'borrar' id=articulo.id %}" class="btn-small btn-delete">Eliminar</a>
-                    </p>
-                {% endcomment %}
+            <h2> 
+            <a href="{% url 'articles' article.id %}">
+            {{article.title}}
+            </a>
+            </h2>
+
+            <span>    {{article.created_at}} </span>
+
+            {{article.user.first_name}} :: 
+
+            <p>
+            {% for category in article.categories.all %}
+            <!-- incluye el enlace a la categoría -->
+            <a href="{% url 'category' category.id %}"> {{category.name}} </a>
+
+            <!-- separar las categorias -->
+            {% if forloop.counter < article.categories.all|length %}
+            {{'| '}}
+            {% endif %}
+
+            {% endfor %}
+
+            </p>
+
+            <!--- mostrar el contenido completo del articulo -->
+            <div class="article-content">	
+                {{article.content|safe}} 
             </div>
 
-            <div class="clearfix"></div>
-            </article>
+            {% comment %}    <p>
+            <a href="{% url 'borrar' id=articulo.id %}" class="btn-small btn-delete">Eliminar</a>
+            </p>
+            {% endcomment %}
+        </div>
+
+        <div class="clearfix"></div>
+    </article>
+    <div>
+   
 {% endfor %}
