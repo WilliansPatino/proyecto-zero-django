@@ -1,0 +1,10 @@
+DATABASES = {
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'postgres',
+        'NAME': 'proyecto-zero-django',
+        'PASSWORD': 'passsworddd',
+        'HOST': 'localhost',
+        'PORT': 5432
+     }
+}

@@ -36,17 +36,23 @@
                 </li>
 
   
-                <!-- paginas dinamicas -->
-                  {% for page in pages %}
-                        <li>
-                        <a href="{% url 'page' page.2 %}"> {{page.1}}</a>
-                        </li>
-                  {% endfor %}
-                <!-- end pag dinamicas -->
+            
                    
+                <!-- si usuario ha hecho login -->
+                 {% if user.email %}
 
-                <!-- CATEGORIES - despliege dinámico -->
-                  <li class="bw-has-submenu bw-current">
+                    <!-- paginas dinamicas -->
+                    {% for page in pages %}
+                            <li>
+                            <a href="{% url 'page' page.2 %}"> {{page.1}}</a>
+                            </li>
+                    {% endfor %}
+                    <!-- end pag dinamicas -->
+
+
+
+                    <!-- CATEGORIES - despliege dinámico -->
+                    <li class="bw-has-submenu bw-current">
                     <a href="{% url 'articles-list' %}"><span>Categorías</span></a>
                         <ul>
                         {% for category in categories %}
@@ -56,11 +62,24 @@
                         {% endfor %}
                         </ul>
 			        </li>
+                    <li>
+                        <a href="{% url 'logout' %}">Cerrar sesión</a>
+                    </li>
+                {% else %}
 
-                <!-- registro -->   
-                <li>
-                    <a href="{% url 'registerpage' %}">Registro</a>
-                </li>
+                    <!-- registro / login -->   
+                    <li>
+                        <a href="{% url 'registerpage' %}">Registro</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'login' %}">Log in</a>
+                    </li>
+
+                {% endif %}
+                <!-- usuario con login -->
+
+              
+              
                     
             
         </ul>

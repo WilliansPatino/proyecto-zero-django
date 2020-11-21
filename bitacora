@@ -254,7 +254,7 @@ Mostrar las categorias provenientes del archivos
 
 
 
-*--- 19.10.2020 ---
+*--- 19.11.2020 ---
 
 * Una página para cada artículo
 
@@ -320,3 +320,79 @@ Mostrar las categorias provenientes del archivos
 *  Página de login/registro
 
 * Personalizar la vista del formulario de registro basado en un modelo
+
+
+*--  20 .11.2020
+
+* Log in de usuario; vistas, templates
+
+* Mostrar info del usuario autenticado y seleccionar paginas del menu
+
+* decorators
+
+	o 	Utilizando la vista de 'pages/views.py' como ejemplo.
+
+		agregar:
+
+		# restringir paginas/urls
+		from django.contrib.auth.decorators import login_required
+
+		# redirecciona a la pagina de log in
+		@login_required(login_url='login')
+		def page(request, slug):
+
+* Impedir acceso a registro/login
+
+* Uso de Mysql en django
+
+
+	Para esta sección del curso, personalmente, yo voy a 
+	utilizar PostgreSQL
+
+
+
+	o 	En mi caso, intentare utilizar un DBMS previamente configurado
+		con Docker. 
+
+		Arranco el container:
+
+			docker start psql12
+
+
+
+	o 	Ajustar la configuracion en 'settings.py'
+
+		comentar toda la sessión:
+
+			"""
+				DATABASES = {
+
+				}
+			"""
+
+	o 	Agregar la nueva config de la bases de datos:
+
+
+ 		DATABASES = {
+	     	'default': {
+	        'ENGINE': 'django.db.backends.postgresql',
+	        'USER': 'postgres',
+	        'NAME': 'proyectp-zero-django',
+	        'PASSWORD': 'hokusai8',
+	        'HOST': 'localhost',
+	        'PORT': 5432
+	     	}
+ 		}
+
+ 	o 	Levantar 'pgadmin4' para revisar las tablas (opcional)
+
+ 		En mi caso, iniciar el container 
+
+ 			docker start pgadmin4
+
+ 		cuya IP en configuracion inicial es: 192.168.250.8
+
+
+ 	o 	Crear el Superusuario del Panel de Administración
+
+ 		python3 manage.py createsuperuser

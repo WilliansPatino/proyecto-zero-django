@@ -285,7 +285,7 @@ nav > ul > li:hover > ul > li:hover a{
     padding: 10px;
     margin-top: 20px;
     background: #0f8a53;
-    color: black;
+    color: white;
     width: 30%;
     text-transform: uppercase;
     border-radius: 20px;
@@ -298,10 +298,12 @@ nav > ul > li:hover > ul > li:hover a{
     cursor: pointer;
     background:#2ba977;
     color: whitesmoke;
-    background: #046b3f;
-
 }
-
+.btn-area {
+    height: 60px;
+    padding: 10px;
+    padding-bottom: 10px;
+}
 
 
 footer {
@@ -332,7 +334,7 @@ footer {
     color: red;
     box-shadow: 0px 0px 0px black;
 }
-.error_message, .alert {
+.error_message, .alert, .alert-warning {
     padding: 12px;
     background: #d30d0d;
     text-align: center;
@@ -342,7 +344,8 @@ footer {
    font-size: 20px;
    color: white;
 }
-.success_message, .success  {
+.alert-success, .success_message, .success,
+.alert  {
     padding: 12px;
     background: #0f8a53;
     text-align: center;

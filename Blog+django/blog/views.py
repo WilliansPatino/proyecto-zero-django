@@ -5,7 +5,11 @@ from django.core.paginator import Paginator
 # Create your views here.
 from blog.models import Article, Category
 
+# restringir paginas/urls
+from django.contrib.auth.decorators import login_required
 
+# redirecciona a la pagina de log in
+@login_required(login_url='login')
 def list(request):
 
     articles = Article.objects.all()
@@ -21,6 +25,7 @@ def list(request):
         'articles': page_article
 	})
 
+@login_required(login_url='login')
 def category(request, category_id):
 
     # category = Category.objects.get(id=category_id)
@@ -34,7 +39,7 @@ def category(request, category_id):
         'articles': articles
     })
 
-
+@login_required(login_url='login')
 def article(request, article_id):
 
     article = get_object_or_404(Article, id=article_id)

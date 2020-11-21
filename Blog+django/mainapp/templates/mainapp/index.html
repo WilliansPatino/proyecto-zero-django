@@ -4,6 +4,7 @@
 
 {%  block content %}
     <h1> {{title}} </h1>
+    <hr>
 
     {% if messages %}
 
@@ -13,6 +14,16 @@
             </div>
         {% endfor %}
 
+    {% endif %}
+
+    <!-- si el usuario esta autenticado -->
+    {% if user.email %}
+        <h2>Bienvenido, {{request.user.first_name}}</h2>
+        <p>
+        {{user.email}}
+        </p>
+    {% else %}
+        <h3>Log in para acceder a las opciones del sistema</h3>
     {% endif %}
 
  {% endblock %}
